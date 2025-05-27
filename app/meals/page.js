@@ -2,10 +2,15 @@ import Link from 'next/link';
 import classes from './page.module.css';
 import MealsGrid from '@/components/meals/meals-grid';
 import { getMeals } from '@/lib/meals';
+import { Suspense } from 'react';
 
-export default async function MealsPage() {
+async function Meals() {
   const meals = await getMeals();
 
+  return <MealsGrid meals={meals} />;
+}
+
+export default function MealsPage() {
   return (
     <>
       <header className={classes.header}>
@@ -21,7 +26,24 @@ export default async function MealsPage() {
         </p>
       </header>
       <main className={classes.main}>
-        <MealsGrid meals={meals} />
+        {/*
+        Suspense here handles async loading of the <Meals /> Server Component.
+
+        Key differences:
+
+        - Server (Next.js 13+): Suspense waits for async data fetching during server-side rendering, showing fallback until ready.
+        
+        - Client: Suspense is used mainly with React.lazy (code splitting) or with data-fetch libs like React Query. React doesn’t yet support native data fetching Suspense on the client.
+
+        In short:  
+        Server Suspense = waiting for async server data.  
+        Client Suspense = waiting for lazy code or data via libs.
+    */}
+        <Suspense
+          fallback={<p className={classes.loading}>Fetching meals...</p>}
+        >
+          <Meals />
+        </Suspense>
       </main>
     </>
   );
