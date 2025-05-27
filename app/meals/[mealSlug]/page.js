@@ -1,9 +1,19 @@
 import Image from 'next/image';
 import classes from './page.module.css';
 import { getMeal } from '@/lib/meals';
+import { notFound } from 'next/navigation';
 
 export default function MealDetailsPage({ params }) {
   const meal = getMeal(params.mealSlug);
+
+  if (!meal) {
+    // notFound() is a special function provided by Next.js (App Router).
+    // 📌 It tells Next.js: "This page or resource doesn't exist."
+    // 🧭 It stops rendering and shows the closest not-found.js page (like a 404).
+    // ❌ It does NOT trigger error.js – it's NOT for unexpected crashes or bugs.
+    // ✅ Use it when data is missing or the URL is invalid (e.g., no meal found).
+    notFound();
+  }
 
   // Replace all newline characters (\n) with <br/> tags
   // \n        = newline character
