@@ -1,3 +1,4 @@
+import { shareMeal } from '@/lib/action';
 import ImagePicker from '../image-picker';
 import classes from './page.module.css';
 
@@ -21,19 +22,19 @@ export default function ShareMealPage() {
   // - No need for `onSubmit`
   // - No need for `fetch` or API routes
   // - It's secure, simple, and fully server-powered
-  async function shareMeal(formData) {
-    'use server';
+  // async function shareMeal(formData) {
+  //   'use server';
 
-    const meal = {
-      title: formData.get('title'),
-      summary: formData.get('summary'),
-      instructions: formData.get('instructions'),
-      image: formData.get('image'),
-      creator: formData.get('name'),
-      creator_email: formData.get('email'),
-    };
-    console.log(meal);
-  }
+  //   const meal = {
+  //     title: formData.get('title'),
+  //     summary: formData.get('summary'),
+  //     instructions: formData.get('instructions'),
+  //     image: formData.get('image'),
+  //     creator: formData.get('name'),
+  //     creator_email: formData.get('email'),
+  //   };
+  //   console.log(meal);
+  // }
 
   return (
     <>
