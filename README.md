@@ -22,3 +22,32 @@ export default function Example() {
 npm install better-sqlite3
 
 ```
+
+## 📦 Install Dependencies
+
+We use the `slugify` package to generate URL-friendly slugs from meal titles.  
+For example, a title like **"My Favorite Meal!"** becomes **"my-favorite-meal"**.  
+This helps us create clean, readable, and unique URLs for each shared meal.
+
+```bash
+npm install slugify
+
+```
+
+## 🧪 Example Usage
+
+```bash
+import slugify from 'slugify';
+
+const title = 'My Favorite Meal!';
+const slug = slugify(title, { lower: true }); // -> 'my-favorite-meal'
+```
+
+## 🛡️ Sanitize User Input
+
+We use the `xss` package to sanitize user input and protect against cross-site scripting (XSS) attacks.  
+This ensures that any HTML or script tags submitted by users are cleaned before being stored or rendered.
+
+```bash
+npm install xss
+```
