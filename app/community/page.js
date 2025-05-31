@@ -5,6 +5,11 @@ import communityIcon from '@/assets/icons/community.png';
 import eventsIcon from '@/assets/icons/events.png';
 import classes from './page.module.css';
 
+export const metadata = {
+  title: 'Foodies Community',
+  description: 'Join our community and share your favorite recipes.',
+};
+
 export default function CommunityPage() {
   return (
     <>
@@ -19,6 +24,23 @@ export default function CommunityPage() {
 
         <ul className={classes.perks}>
           <li>
+            {/* 
+ 
+            Using a regular <img> tag requires a valid src attribute:
+            - src must contain the image URL or relative path.
+            - Use <img src={image.src} /> when no Next.js optimizations are needed.
+            - Common for external or simple static images.
+        */}
+
+            {/* ✅ Next.js <Image> component:
+            Automatically optimizes images for performance.
+            Benefits include:
+            - Lazy loading by default
+            - Responsive resizing for different screen sizes
+            - Modern formats (like WebP) for better compression
+            - SEO improvements (with proper alt text)
+            - Better performance than regular <img> in production
+        */}
             <Image src={mealIcon} alt="A delicious meal" />
             <p>Share & discover recipes</p>
           </li>
