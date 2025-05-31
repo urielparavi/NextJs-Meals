@@ -107,7 +107,7 @@
 
 'use client';
 
-import { shareMeal } from '@/lib/action';
+import { shareMeal } from '@/lib/actions';
 import ImagePicker from '../image-picker';
 import classes from './page.module.css';
 import MealsFormSubmit from '../meals-form-submit';
