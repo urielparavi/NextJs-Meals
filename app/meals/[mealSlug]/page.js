@@ -3,6 +3,22 @@ import classes from './page.module.css';
 import { getMeal } from '@/lib/meals';
 import { notFound } from 'next/navigation';
 
+// Dynamically generates metadata (like title and description) for a specific meal page
+// based on the URL slug (params.mealSlug). This improves SEO and provides
+// relevant metadata for each page. If the meal doesn't exist, a 404 page is returned.
+export async function generateMetadata({ params }) {
+  const meal = getMeal(params.mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+}
+
 export default function MealDetailsPage({ params }) {
   const meal = getMeal(params.mealSlug);
 
